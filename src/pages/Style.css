@@ -1,0 +1,51 @@
+.current-weather-div{
+    background-color: white;
+    margin-left: 20px;
+    margin-top: 30px;
+    border-top-left-radius: 15px; /* Adjust only the top left corner */
+    border-bottom-left-radius: 20px; 
+}
+.temperature-value {
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bolder;
+    /* Add any other desired styles */
+  }
+  .temperature-container {
+    position: relative;
+    /* Adjust as needed */
+    margin-left: 40px;
+  }
+  
+  .celsius-symbol {
+    position: absolute;
+   
+    left: 8.5rem; /* Adjust as needed */
+    font-size: 2.2rem; /* Adjust the size of the symbol */
+    font-weight: normal; /* Adjust font weight if needed */
+    font-style: normal; /* Adjust font style if needed */
+  }
+  .time-value{
+    margin-left: 30px;
+    margin-top: 5px;
+  }
+  .minor-horizontal-line {
+    border: none;
+    border-top: 1px solid #ccc; /* Adjust color and style as desired */
+    margin: 10px 0; /* Adjust the margin as needed */
+  }
+.condition-value{
+  margin-left: 60px;
+}  
+
+/*Weekly Weather Div*/
+
+.weekly-weather-div{
+    background-color: #F6F6F8;
+    margin-top: 30px;
+    border-top-right-radius: 15px; /* Adjust only the top left corner */
+    border-bottom-right-radius: 20px; 
+}
+.forecast-icons{
+  margin-top: 15px;
+}

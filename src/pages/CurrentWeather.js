@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment-timezone"; // Import moment-timezone library
 import axios from "axios";
+import "./Style.css";
 import {
   WiDaySunny,
   WiRain,
   WiCloudy,
   WiSmoke,
   WiDust,
-  WiThunderstorm,WiSnow,
+  WiThunderstorm,
+  WiSnow,
 } from "weather-icons-react";
 
 // Function to get country based on timezone
@@ -287,46 +289,49 @@ const CurrentWeather = ({ handleCitySelect }) => {
 
   return (
     <div>
-      <select
-        className="form-select mt-5"
-        value={selectedCity}
-        onChange={(e) => handleInputChange(e)}
-      >
-        <option value="">Select a city...</option>
-        {/* Render options for famous cities */}
-        {famousCities.map((cityName, index) => (
-          <option key={index} value={cityName}>
-            {cityName}
+      <div className="custom-dropdown">
+        <select
+          className="form-select mt-3 p-2 custom-select"
+          value={selectedCity}
+          onChange={(e) => handleInputChange(e)}
+        >
+          <option value="" disabled hidden>
+            Select a city...
           </option>
-        ))}
-      </select>
+          {famousCities.map((cityName, index) => (
+            <option key={index} value={cityName}>
+              {cityName}
+            </option>
+          ))}
+        </select>
+      </div>
 
       {weatherData && (
         <div>
-        {weatherData.condition === "Thunderstorm" && (
-          <WiThunderstorm size={300} color="#888" />
-        )}
-        {weatherData.condition === "Clear" && (
-          <WiDaySunny size={300} color="#FFD700" />
-        )}
-        {weatherData.condition === "Rain" && (
-          <WiRain size={300} color="#4286f4" />
-        )}
-        {weatherData.condition === "Clouds" && (
-          <WiCloudy size={300} color="#aaa" />
-        )}
-        {weatherData.condition === "Smoke" && (
-          <WiSmoke size={300} color="#3524" />
-        )}
-        {weatherData.condition === "Mist" && (
-          <WiDust size={300} color="#bbb" />
-        )}
-        {weatherData.condition === "Haze" && (
-          <WiSmoke size={300} color="#bbb" />
-        )}
-        {weatherData.condition === "Snow" && (
-          <WiSnow size={300} color="#ffw" />
-        )}
+          {weatherData.condition === "Thunderstorm" && (
+            <WiThunderstorm size={300} color="#888" />
+          )}
+          {weatherData.condition === "Clear" && (
+            <WiDaySunny size={300} color="#FFD700" />
+          )}
+          {weatherData.condition === "Rain" && (
+            <WiRain size={300} color="#4286f4" />
+          )}
+          {weatherData.condition === "Clouds" && (
+            <WiCloudy size={300} color="#aaa" />
+          )}
+          {weatherData.condition === "Smoke" && (
+            <WiSmoke size={300} color="#3524" />
+          )}
+          {weatherData.condition === "Mist" && (
+            <WiDust size={300} color="#bbb" />
+          )}
+          {weatherData.condition === "Haze" && (
+            <WiSmoke size={300} color="#bbb" />
+          )}
+          {weatherData.condition === "Snow" && (
+            <WiSnow size={300} color="#ffw" />
+          )}
           {/* <p>City: {selectedCity.toUpperCase()}</p> */}
           <div className="temperature-container">
             <span className="temperature-value">{weatherData.temperature}</span>
@@ -380,7 +385,7 @@ const CurrentWeather = ({ handleCitySelect }) => {
             )}
           </div>
 
-            {/* <p>Country: {getCountryName(weatherData.country)}</p> */}
+          {/* <p>Country: {getCountryName(weatherData.country)}</p> */}
         </div>
       )}
     </div>

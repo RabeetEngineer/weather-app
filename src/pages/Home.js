@@ -1,31 +1,30 @@
 import React, { useState } from "react";
 import CurrentWeather from "./CurrentWeather";
 import ForecastWeather from "../components/ForecastWeather";
-import { Link } from 'react-router-dom';
-import './Style.css'
+import { Link } from "react-router-dom";
+import "./Style.css";
 
 const Home = ({ api_key }) => {
   const [selectedCity, setSelectedCity] = useState("");
   const [activeTab, setActiveTab] = useState("default"); // Set "today" as the default active
+
   
+
   const handleCitySelect = (selectedCity) => {
-    console.log('Selected city in handleCitySelect:', selectedCity);
+    console.log("Selected city in handleCitySelect:", selectedCity);
     setSelectedCity(selectedCity);
   };
   const handleTabChange = (tab) => {
-    console.log('Tab changed to:', tab);
+    console.log("Tab changed to:", tab);
     setActiveTab(tab);
   };
 
   return (
     <>
-      <div className="container" style={{backgroundColor:"#D6D7DA"}}>
-        <div className="container-fluid" >
+      <div className="container" style={{ backgroundColor: "#D6D7DA" }}>
+        <div className="container-fluid">
           <div className="row">
-            <div
-              className="col-lg-3 col-md-3 col-sm-12 current-weather-div"
-              
-            >
+            <div className="col-lg-3 col-md-3 col-sm-12 current-weather-div">
               <CurrentWeather handleCitySelect={handleCitySelect} />
               {console.log("")}
             </div>
@@ -36,7 +35,7 @@ const Home = ({ api_key }) => {
                   id="navbarSupportedContent"
                 >
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                  {/** 
+                    {/** 
                     <li className="nav-item">
                       <Link
                         className={`nav-link ${
@@ -50,28 +49,47 @@ const Home = ({ api_key }) => {
                     </li>
                     */}
                     <li className="nav-item">
-  <Link
-    className={`nav-link ${activeTab === "week" ? "active" : ""}`}
-    to="#"
-    onClick={() => handleTabChange("week")}
-    style={{
-      fontWeight: 'bold', // Making the text bold
-      color: activeTab === "week" ? 'orange' : 'inherit', // Applying highlighting when active
-      textDecoration: 'none', // Removing the default underline
-      transition: 'color 0.3s, font-weight 0.3s', // Adding a smooth transition effect
-      // Other styles can be added here
-      fontSize:'30px '
-    }}
-  >
-    Weekly Forecast
-  </Link>
-</li>
-    
+                      <Link
+                        className={`nav-link ${
+                          activeTab === "week" ? "active" : ""
+                        }`}
+                        to="#"
+                        onClick={() => handleTabChange("week")}
+                        style={{
+                          fontWeight: "bold",
+                          color: activeTab === "week" ? "orange" : "inherit",
+                          textDecoration: "none",
+                          transition: "color 0.3s, font-weight 0.3s",
+                          fontSize: "30px",
+                          position: "relative",
+                          cursor: "pointer",
+                          display: "inline-block",
+                        }}
+                      >
+                        Weekly Forecast
+                        <span
+                          style={{
+                            position: "absolute",
+                            bottom: "-4px",
+                            left: "50%",
+                            transform: "translateX(-50%)",
+                            borderBottom: `2px solid ${
+                              activeTab === "week" ? "orange" : "transparent"
+                            }`, // Show underline when active
+                            width: "40%",
+                            transition: "border-color 0.3s", // Add transition for smooth effect
+                          }}
+                        />
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </nav>
               {activeTab === "week" && (
-                <ForecastWeather selectedCity={selectedCity} api_key={api_key} />
+                <ForecastWeather
+                  selectedCity={selectedCity}
+                  api_key={api_key}
+                />
               )}
             </div>
           </div>

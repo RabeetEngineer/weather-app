@@ -21,14 +21,16 @@ const Home = ({ api_key }) => {
 
   return (
     <>
-      <div className="container" style={{ backgroundColor: "#D6D7DA" }}>
+      <div className="container" style={{ backgroundColor: "#D6D7DA", paddingBottom:'30px', paddingLeft:'20px', paddingRight:'20px' }}>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-3 col-md-3 col-sm-12 current-weather-div">
+
+            <div className="col-lg-3 col-md-12 col-sm-12 current-weather-div">
               <CurrentWeather handleCitySelect={handleCitySelect} />
               {console.log("")}
             </div>
-            <div className="col-lg-8 col-md-8 col-sm-12 weekly-weather-div">
+            
+            <div className="col-lg-9 col-md-12 col-sm-12 weekly-weather-div">
               <nav className="navbar navbar-expand-lg">
                 <div
                   className="collapse navbar-collapse"
@@ -92,6 +94,7 @@ const Home = ({ api_key }) => {
                 />
               )}
             </div>
+
           </div>
         </div>
       </div>

@@ -6,60 +6,37 @@ import "./Style.css";
 
 const Home = ({ api_key }) => {
   const [selectedCity, setSelectedCity] = useState("");
-  const [activeTab, setActiveTab] = useState("default"); // Set "today" as the default active
-
-  
 
   const handleCitySelect = (selectedCity) => {
     console.log("Selected city in handleCitySelect:", selectedCity);
     setSelectedCity(selectedCity);
   };
-  const handleTabChange = (tab) => {
-    console.log("Tab changed to:", tab);
-    setActiveTab(tab);
-  };
 
   return (
     <>
-      <div className="container" style={{ backgroundColor: "#D6D7DA", paddingBottom:'30px', paddingLeft:'20px', paddingRight:'20px' }}>
+      <div className="container" style={{ backgroundColor: "#D6D7DA", paddingBottom: '30px', paddingLeft: '20px', paddingRight: '20px' }}>
         <div className="container-fluid">
           <div className="row">
 
             <div className="col-lg-3 col-md-12 col-sm-12 current-weather-div">
               <CurrentWeather handleCitySelect={handleCitySelect} />
-              {console.log("")}
             </div>
-            
+
             <div className="col-lg-9 col-md-12 col-sm-12 weekly-weather-div">
               <nav className="navbar navbar-expand-lg">
                 <div
                   className="collapse navbar-collapse"
                   id="navbarSupportedContent"
                 >
-                  <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    {/** 
+                  <ul className="navbar-nav me-auto mb-2 mb-lg-0" style={{ width: '100%' }}>
                     <li className="nav-item">
                       <Link
-                        className={`nav-link ${
-                          activeTab === "today" ? "active" : ""
-                        }`}
+                        className="nav-link"
                         to="#"
-                        onClick={() => handleTabChange("today")}
-                      >
-                        Today
-                      </Link>
-                    </li>
-                    */}
-                    <li className="nav-item">
-                      <Link
-                        className={`nav-link ${
-                          activeTab === "week" ? "active" : ""
-                        }`}
-                        to="#"
-                        onClick={() => handleTabChange("week")}
+                        onClick={() => setSelectedCity(selectedCity)} // Set the selected city directly
                         style={{
                           fontWeight: "bold",
-                          color: activeTab === "week" ? "orange" : "inherit",
+                          color: "orange", // Always set to orange when clicked
                           textDecoration: "none",
                           transition: "color 0.3s, font-weight 0.3s",
                           fontSize: "30px",
@@ -75,11 +52,9 @@ const Home = ({ api_key }) => {
                             bottom: "-4px",
                             left: "50%",
                             transform: "translateX(-50%)",
-                            borderBottom: `2px solid ${
-                              activeTab === "week" ? "orange" : "transparent"
-                            }`, // Show underline when active
+                            borderBottom: "2px solid orange", // Always show orange underline
                             width: "40%",
-                            transition: "border-color 0.3s", // Add transition for smooth effect
+                            transition: "border-color 0.3s",
                           }}
                         />
                       </Link>
@@ -87,12 +62,10 @@ const Home = ({ api_key }) => {
                   </ul>
                 </div>
               </nav>
-              {activeTab === "week" && (
-                <ForecastWeather
-                  selectedCity={selectedCity}
-                  api_key={api_key}
-                />
-              )}
+              <ForecastWeather // Render ForecastWeather directly
+                selectedCity={selectedCity}
+                api_key={api_key}
+              />
             </div>
 
           </div>
